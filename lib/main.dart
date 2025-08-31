@@ -1,6 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:uc_task_1/features/auth/presentation/pages/auth_page.dart';
+import 'package:uc_task_1/features/auth/presentation/pages/login_page.dart';
+import 'package:uc_task_1/features/auth/presentation/pages/register_page.dart';
 import 'package:uc_task_1/firebase_options.dart';
+import 'package:uc_task_1/themes/light_mode.dart';
+import 'package:uc_task_1/features/auth/presentation/pages/login_page.dart';
+
 
 void main() async{
   //firebase setup
@@ -18,7 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: AuthPage(),
+      theme: lightMode,
     );
   }
 }
