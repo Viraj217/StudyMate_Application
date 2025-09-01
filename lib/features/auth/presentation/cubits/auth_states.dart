@@ -1,7 +1,6 @@
 /*
-
 Auth States
- */
+*/
 
 import '../../domain/entities/app_user.dart';
 

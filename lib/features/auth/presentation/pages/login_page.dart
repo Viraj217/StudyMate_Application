@@ -11,9 +11,14 @@ if doesnt have a acc then register at the regi page to create one
 
  */
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uc_task_1/features/auth/presentation/components/my_button.dart';
 import 'package:uc_task_1/features/auth/presentation/components/my_textfield.dart';
+
+import '../cubits/auth_cubits.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -31,6 +36,30 @@ class _LoginPageState extends State<LoginPage> {
   //text controlle
   final emailController = TextEditingController();
   final pwController = TextEditingController();
+
+  //login button pressed
+  void login(){
+    //prepare info
+    final String email = emailController.text;
+    final String pw = pwController.text;
+
+    //auth cubit
+    final authCubit = context.read<AuthCubit>();
+
+    //if fields are not empty
+    if(email.isNotEmpty && pw.isNotEmpty){
+      authCubit.login(email, pw);
+    }
+    //fields are empty -> then display error
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Please fill all fields!"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
 
   @override
@@ -96,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
 
               //login button
               MyButton(
-                onTap: (){},
+                onTap: login,
                 text: "Login",
               ),
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
+import '../cubits/auth_cubits.dart';
 
 class RegisterPage extends StatefulWidget {
 
@@ -19,6 +20,54 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final pwController = TextEditingController();
   final confirmpwController = TextEditingController();
+
+  //register button pressed
+  void register() {
+    //prepare info
+    final String name = nameController.text;
+    final String email = emailController.text;
+    final String pw = pwController.text;
+    final String confirmpw = confirmpwController.text;
+
+    //auth cubit
+    final authCubit = context.read<AuthCubit>();
+
+    if(email.isNotEmpty && pw.isNotEmpty && confirmpw.isNotEmpty && name.isNotEmpty){
+      if(pw == confirmpw){
+        authCubit.register(name, email, pw);
+      }
+
+      //if dont match
+      else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Passwords don't match!"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+    //fields are empty -> then display error
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Please fill all fields!"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    pwController.dispose();
+    confirmpwController.dispose();
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               //login button
               MyButton(
-                onTap: (){},
+                onTap: register ,
                 text: "Sign Up",
               ),
 
