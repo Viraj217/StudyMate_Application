@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uc_task_1/features/auth/presentation/components/loading.dart';
 import 'package:uc_task_1/features/auth/presentation/cubits/auth_states.dart';
 import 'package:uc_task_1/features/auth/presentation/pages/auth_page.dart';
 import 'package:uc_task_1/firebase_options.dart';
@@ -9,6 +8,7 @@ import 'package:uc_task_1/themes/light_mode.dart';
 import 'features/auth/data/firebase_auth_repo.dart';
 import 'features/auth/presentation/cubits/auth_cubits.dart';
 import 'features/home/presentation/pages/home_page.dart';
+import 'features/home/presentation/pages/splash_page.dart';
 
 
 void main() async{
@@ -56,9 +56,9 @@ class MyApp extends StatelessWidget {
                     if (state is Authenticated) {
                       return HomePage();
                     }
-                    //loadig..
+                    //loading..
                     else {
-                      return LoadingScreen();
+                      return SplashScreen();
                     }
 
                   },

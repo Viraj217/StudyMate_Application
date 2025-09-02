@@ -8,7 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthRepo implements AuthRepo {
 
-
   // access to firebase
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
@@ -25,7 +24,7 @@ class FirebaseAuthRepo implements AuthRepo {
           uid: userCredential.user!.uid, // Access user from the instance userCredential
           email: email, // or userCredential.user!.email if you prefer (though email is already available)
         );
-        // return user; // Or do something with the AppUser object
+        return user; // Or do something with the AppUser object
       } else {
         // Handle the case where user is null after a successful sign-in (should be rare but good to check)
         throw Exception('Login successful, but user data is null.');

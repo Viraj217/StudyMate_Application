@@ -23,7 +23,10 @@ class AuthCubit extends Cubit<AuthState>{
     emit(AuthLoading());
 
     // get current user
-    final AppUser? user = await authRepo.getCurrentUser();
+    // final AppUser? user = await authRepo.getCurrentUser();
+
+    await Future.delayed(const Duration(seconds: 2));
+    final user = await authRepo.getCurrentUser();
 
     if(user != null){
       _currentUser = user;

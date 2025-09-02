@@ -72,13 +72,22 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // logo
-              Icon(
-                Icons.menu_book,
-                size: 80,
-                color: Theme.of(context).colorScheme.primary,
+              // Icon(
+              //   Icons.menu_book,
+              //   size: 80,
+              //   color: Theme.of(context).colorScheme.primary,
+              // ),
+              Image.asset(
+                'assets/images/studymate_logo.png', // <-- Replace with your actual asset path
+                width: 200,
+                height: 200,
+                // You can also add color if your image is a template image (e.g., an SVG or a single-color PNG)
+                // color: Theme.of(context).colorScheme.primary,
+                // If your image already has colors, you might not need the color property,
+                // or you might want to use it with a BlendMode.
               ),
 
-              const SizedBox(height: 25,),
+              const SizedBox(height: 15,),
               //name of the app
               Text("S T U D Y M A T E",
                 style: TextStyle(

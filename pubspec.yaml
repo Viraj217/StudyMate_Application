@@ -37,6 +37,7 @@ dependencies:
   firebase_core: ^4.0.0
   firebase_auth: ^6.0.1
   flutter_bloc: ^9.1.1
+  flutter_native_splash: ^2.4.6
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +62,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/studymate_logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -90,3 +91,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_native_splash:
+  color: "#ffffff" # background color
+  image: assets/images/studymate_logo.png # your logo
+  android: true
+  ios: true
+  web: false
